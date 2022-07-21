@@ -1,0 +1,9 @@
+
+**/.idea/*
+**/target/*
+
+.idea
+*.iml
+*.class
+
+/${project.basedir}/
