@@ -1,4 +1,4 @@
-package com.hello.world.java.metric;
+package com.hello.world.java;
 
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -15,10 +15,6 @@ public class Demo1 {
         field.setAccessible(true);
         org.apache.flink.configuration.Configuration conf = (Configuration) field.get(env);
         conf.setString("rest.bind-port", "8080");
-
-        env.addSource(new CustSource())
-                .map(new MyMapFun())
-                .print();
 
         env.execute();
     }

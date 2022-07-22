@@ -16,4 +16,26 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <dependencies>
+<!--        &lt;!&ndash; HttpClinet 核心包 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.httpcomponents</groupId>-->
+<!--            <artifactId>httpclient</artifactId>-->
+<!--            <version>4.5.13</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; HttpClinet 请求时，涉及文件上传需要的包 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.httpcomponents</groupId>-->
+<!--            <artifactId>httpmime</artifactId>-->
+<!--            <version>4.5.13</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-http</artifactId>
+            <version>5.8.4.M1</version>
+        </dependency>
+
+    </dependencies>
+
 </project>
