@@ -8,116 +8,19 @@
     <artifactId>flink-example</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>flink-java</module>
         <module>flink-scala</module>
         <module>demo</module>
+        <module>flink-java15</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-
-        <flink.version>1.14.4</flink.version>
-        <scala.version>2.12</scala.version>
-        <scala.version.b>2.12.15</scala.version.b>
         <log4j2.version>2.17.2</log4j2.version>
-
-        <jackson.version>2.13.3</jackson.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-table-planner_${scala.version}</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.flink</groupId>-->
-        <!--            <artifactId>flink-table-planner-blink_${scala.version}</artifactId>-->
-        <!--            <version>${flink.version}</version>-->
-        <!--        </dependency>-->
-
-
-        <!--    1.11及以后版本需要引入    -->
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-clients_${scala.version}</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-runtime-web_${scala.version}</artifactId>
-            <version>${flink.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.flink</groupId>-->
-        <!--            <artifactId>flink-statebackend-rocksdb_${scala.version}</artifactId>-->
-        <!--            <version>${flink.version}</version>-->
-        <!--        </dependency>-->
-
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-json</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-csv</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.doris</groupId>
-            <artifactId>flink-doris-connector-1.14_2.12</artifactId>
-            <version>1.0.3</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.ververica</groupId>
-            <artifactId>flink-sql-connector-mysql-cdc</artifactId>
-            <!-- the dependency is available only for stable releases. -->
-            <version>2.2.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-jdbc_${scala.version}</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka_${scala.version}</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-
-        <!--    jackson    -->
-<!--        <dependency>-->
-<!--            <groupId>org.json4s</groupId>-->
-<!--            <artifactId>json4s-jackson_${scala.version}</artifactId>-->
-<!--            <version>4.0.5</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-<!--            <artifactId>jackson-annotations</artifactId>-->
-<!--            <version>2.13.3</version>-->
-<!--        </dependency>-->
-
-
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.15</version>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -126,9 +29,21 @@
         </dependency>
 
         <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.3</version>
         </dependency>
 
         <!--log4j 2 -->
@@ -156,29 +71,6 @@
             <version>${log4j2.version}</version>
         </dependency>
         <!---->
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.21</version>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
     </dependencies>
-
-    <!--    <dependencyManagement>-->
-    <!--        <dependencies>-->
-    <!--            <dependency>-->
-    <!--                <groupId>org.slf4j</groupId>-->
-    <!--                <artifactId>slf4j-api</artifactId>-->
-    <!--                <version>1.7.36</version>-->
-    <!--            </dependency>-->
-    <!--        </dependencies>-->
-    <!--    </dependencyManagement>-->
 
 </project>
