@@ -56,4 +56,23 @@ public class SimpleDateFormatTest {
     public static void main(String[] args) {
         new SimpleDateFormatTest().test2();
     }
+
+    /**
+     * ThreadLocal
+     */
+    public void test3() throws ParseException {
+        // 可以直接设置初始值
+        ThreadLocal<SimpleDateFormat> simpleDateFormat = ThreadLocal.withInitial(() ->
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        );
+
+        // 也可以调用set()方法
+        ThreadLocal<SimpleDateFormat> simpleDateFormat2 = new ThreadLocal<>();
+        simpleDateFormat.set(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+
+        // 调用get()方法取得值
+        System.out.println(simpleDateFormat.get().parse("date"));
+        // 移除
+        simpleDateFormat.remove();
+    }
 }

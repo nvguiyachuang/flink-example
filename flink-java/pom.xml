@@ -15,7 +15,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
 
-        <flink.version>1.14.4</flink.version>
+        <flink.version>1.14.5</flink.version>
         <scala.version>2.12</scala.version>
         <scala.version.b>2.12.15</scala.version.b>
     </properties>

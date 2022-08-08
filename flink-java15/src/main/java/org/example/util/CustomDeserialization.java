@@ -27,9 +27,10 @@ public class CustomDeserialization implements KafkaDeserializationSchema<Record>
     @Override
     public Record deserialize(ConsumerRecord<byte[], byte[]> record) {
         try {
-            Record nameAndMajor = objectMapper.readValue(record.value(), Record.class);
-            nameAndMajor.setTimeStamp(record.timestamp());
-            return nameAndMajor;
+            Record readValue = objectMapper.readValue(record.value(), Record.class);
+            Long timestamp = TimeUtil.stringToTimestamp(readValue.getTime());
+            readValue.setTimeStamp(timestamp);
+            return readValue;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

@@ -13,4 +13,11 @@ public class Record {
     private Integer score;
 
     private Long timeStamp;
+
+    private String time;
+
+    public Record(String name, Integer score) {
+        this.name = name;
+        this.score = score;
+    }
 }
