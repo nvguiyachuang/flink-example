@@ -15,12 +15,18 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
 
-        <flink.version>1.14.5</flink.version>
+        <flink.version>1.13.6</flink.version>
         <scala.version>2.12</scala.version>
         <scala.version.b>2.12.15</scala.version.b>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-scala_${scala.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>
@@ -34,11 +40,11 @@
             <version>${flink.version}</version>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.flink</groupId>-->
-        <!--            <artifactId>flink-table-planner-blink_${scala.version}</artifactId>-->
-        <!--            <version>${flink.version}</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-planner-blink_${scala.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
 
 
         <!--    1.11及以后版本需要引入    -->
@@ -117,6 +123,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.21</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.bahir</groupId>
+            <artifactId>flink-connector-redis_2.10</artifactId>
+            <version>1.0</version>
         </dependency>
 
 

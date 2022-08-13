@@ -40,7 +40,7 @@ public class App {
 //        env.setStateBackend(new EmbeddedRocksDBStateBackend());
         env.setStateBackend(new HashMapStateBackend());
 
-//        env.getCheckpointConfig().setCheckpointStorage(new FileSystemCheckpointStorage("file:///checkpoint-dir"));
+        env.getCheckpointConfig().setCheckpointStorage(new FileSystemCheckpointStorage("file:///checkpoint-dir"));
 //        env.getCheckpointConfig().setCheckpointStorage(new FileSystemCheckpointStorage("hdfs:///xxx-dir"));
         env.getCheckpointConfig().setCheckpointStorage(new JobManagerCheckpointStorage());
 
