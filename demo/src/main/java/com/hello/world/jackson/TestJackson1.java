@@ -203,4 +203,38 @@ public class TestJackson1 extends TestCase {
          */
     }
 
+    public void test13() throws JsonProcessingException {
+        String str = "[\n" +
+                "  {\n" +
+                "    \"endTime\": 1657614400119,\n" +
+                "    \"executeStatus\": \"DONE\",\n" +
+                "    \"instanceStatus\": \"FINISHED\",\n" +
+                "    \"jobId\": \"25\",\n" +
+                "    \"paragraphId\": \"1\",\n" +
+                "    \"result\": \"Table has been dropped.\",\n" +
+                "    \"resultType\": \"STRING\",\n" +
+                "    \"seq\": 1,\n" +
+                "    \"startTime\": 1657614400025,\n" +
+                "    \"statement\": \"DROP temporary TABLE IF EXISTS t14;\\r\"\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"endTime\": 1657614400168,\n" +
+                "    \"executeStatus\": \"DONE\",\n" +
+                "    \"instanceStatus\": \"FINISHED\",\n" +
+                "    \"jobId\": \"25\",\n" +
+                "    \"paragraphId\": \"1\",\n" +
+                "    \"result\": \"Table has been created.\",\n" +
+                "    \"resultType\": \"STRING\",\n" +
+                "    \"seq\": 2,\n" +
+                "    \"startTime\": 1657614400119,\n" +
+                "    \"statement\": \"CREATE temporary TABLE t14(\\r\\n  SSID VARCHAR(20) PRIMARY KEY,\\r\\n  name VARCHAR(10),\\r\\n  age INT,\\r\\n  ts TIMESTAMP(3),\\r\\n  `partition` VARCHAR(20)\\r\\n)\\r\\nPARTITIONED BY (`partition`)\\r\\nWITH (\\r\\n  'connector' = 'hudi',\\r\\n  'path' = 'hdfs://nameservice1/user/hudi/pressure14',\\r\\n    'table.type' = 'MERGE_ON_READ',\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n    'read.streaming.enabled' = 'true'\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n);\"\n" +
+                "  }\n" +
+                "]";
+
+        JsonNode jsonNode = mapper.readTree(str);
+        for (JsonNode node : jsonNode) {
+            System.out.println(node);
+        }
+    }
+
 }

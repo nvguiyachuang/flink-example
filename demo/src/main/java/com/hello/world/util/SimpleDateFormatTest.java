@@ -11,6 +11,9 @@ import java.util.concurrent.TimeUnit;
 
 public class SimpleDateFormatTest {
 
+    private static final ThreadLocal<SimpleDateFormat> sdf = ThreadLocal.withInitial(
+            () -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+
     private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(10, 100, 1,
@@ -20,11 +23,12 @@ public class SimpleDateFormatTest {
     public void test() {
         while (true) {
             poolExecutor.execute(() -> {
-                String dateString = simpleDateFormat.format(new Date());
+                SimpleDateFormat format = sdf.get();
+                String dateString = format.format(new Date());
                 try {
-                    Date parseDate = simpleDateFormat.parse(dateString);
+                    Date parseDate = format.parse(dateString);
 
-                    String dateString2 = simpleDateFormat.format(parseDate);
+                    String dateString2 = format.format(parseDate);
 
                     System.out.println(dateString.equals(dateString2));
                 } catch (ParseException e) {
@@ -54,7 +58,10 @@ public class SimpleDateFormatTest {
     }
 
     public static void main(String[] args) {
-        new SimpleDateFormatTest().test2();
+        new SimpleDateFormatTest().test();
+
+//        SimpleDateFormat format = sdf.get();
+//        String format1 = format.format(null);
     }
 
     /**
