@@ -1,13 +1,16 @@
 package org.example.st;
 
-import org.apache.flink.streaming.api.environment.LocalStreamEnvironment;
+import org.apache.flink.table.api.TableEnvironment;
 
 public class DemoTest {
+    public static void main(String[] args) throws Exception {
+        String sql = "";
+        String sql2 = "";
 
-    private static LocalStreamEnvironment localStreamEnvironment ;
+        Executor executor = new Executor();
+        TableEnvironment tEnv = executor.tEnv;
 
-    public static void main(String[] args) {
-        localStreamEnvironment = new LocalStreamEnvironment(null);
-
+        tEnv.executeSql(sql);
+        tEnv.executeSql(sql2);
     }
 }
