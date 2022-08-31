@@ -33,16 +33,16 @@ public class App {
 
 //        System.out.println(env.getStreamTimeCharacteristic());
 
-        env.setParallelism(4);
+        env.setParallelism(1);
         env.setBufferTimeout(100);
         env.enableCheckpointing(3000L);
 
 //        env.setStateBackend(new EmbeddedRocksDBStateBackend());
-        env.setStateBackend(new HashMapStateBackend());
+//        env.setStateBackend(new HashMapStateBackend());
 
-        env.getCheckpointConfig().setCheckpointStorage(new FileSystemCheckpointStorage("file:///checkpoint-dir"));
+//        env.getCheckpointConfig().setCheckpointStorage(new FileSystemCheckpointStorage("file:///checkpoint-dir"));
 //        env.getCheckpointConfig().setCheckpointStorage(new FileSystemCheckpointStorage("hdfs:///xxx-dir"));
-        env.getCheckpointConfig().setCheckpointStorage(new JobManagerCheckpointStorage());
+//        env.getCheckpointConfig().setCheckpointStorage(new JobManagerCheckpointStorage());
 
         // restartStrategy
         env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3,
@@ -56,7 +56,7 @@ public class App {
 
         KafkaSource<Record> kafkaSource = KafkaSource
                 .<Record>builder()
-                .setBootstrapServers("node1:19092")
+                .setBootstrapServers("node:19092")
                 .setGroupId("test-group")
                 .setTopics("test")
                 .setStartingOffsets(OffsetsInitializer.latest())
