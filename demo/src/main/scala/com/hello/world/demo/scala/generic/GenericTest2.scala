@@ -1,7 +1,5 @@
 package com.hello.world.demo.scala.generic
 
-import org.junit.Test
-
 abstract class Animal2 {
   def name: String
 }

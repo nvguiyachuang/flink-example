@@ -9,10 +9,10 @@ import scala.io.{BufferedSource, Source}
  */
 class ReadFileDemo extends TestCase {
 
-  def readFile(): Unit = {
+  def testReadFile(): Unit = {
     var source: BufferedSource = null
     try {
-      source = Source.fromFile("LICENSE")
+      source = Source.fromFile("pom.xml")
       val list = source.getLines().toList
       list.foreach(println)
     } finally {

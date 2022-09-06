@@ -5,7 +5,7 @@ import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.apache.flink.table.api.EnvironmentSettings
 import org.apache.flink.table.api.bridge.scala.StreamTableEnvironment
 
-class LogDemo7 extends TestCase {
+class Demo7 extends TestCase {
 
   def test1(): Unit = {
     val env = StreamExecutionEnvironment.getExecutionEnvironment

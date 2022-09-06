@@ -1,16 +1,32 @@
 package com.hello.world.flink13.java;
 
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.EnvironmentSettings;
 import org.apache.flink.table.api.TableEnvironment;
+import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
-public class Demo2 {
-    public static void main(String[] args) {
+import java.lang.reflect.Field;
+
+public class Demo {
+    public static void main(String[] args) throws Exception {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+//        env.getConfig().setAutoWatermarkInterval(1000);
+
+        Field field = Class.forName("org.apache.flink.streaming.api.environment.StreamExecutionEnvironment")
+                .getDeclaredField("configuration");
+        field.setAccessible(true);
+        org.apache.flink.configuration.Configuration conf = (Configuration) field.get(env);
+        conf.setString("rest.bind-port", "8080");
+
+
         EnvironmentSettings settings = EnvironmentSettings
                 .newInstance()
                 .inStreamingMode()
                 .build();
 
-        TableEnvironment tEnv = TableEnvironment.create(settings);
+//        TableEnvironment tEnv = TableEnvironment.create(settings);
+        StreamTableEnvironment tEnv = StreamTableEnvironment.create(env, settings);
 
         tEnv.getConfig().getConfiguration().setString("execution.checkpointing.interval", "60s");
 

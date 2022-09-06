@@ -51,8 +51,8 @@ class ListTest {
   /**
    * 不可变list
    */
-  val list = List(17, 6, 35, 44, 71, 93, 88)
-  val list1 = List(111, 222, 333, 88)
+  val list: List[Int] = List(17, 6, 35, 44, 71, 93, 88)
+  val list1: List[Int] = List(111, 222, 333, 88)
 
   @Test
   def groupBy(): Unit = {

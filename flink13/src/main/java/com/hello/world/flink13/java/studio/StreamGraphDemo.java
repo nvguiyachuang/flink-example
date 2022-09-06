@@ -15,6 +15,7 @@ import org.apache.flink.table.delegation.Parser;
 import org.apache.flink.table.delegation.Planner;
 import org.apache.flink.table.operations.ModifyOperation;
 import org.apache.flink.table.operations.Operation;
+import org.apache.flink.table.planner.utils.ExecutorUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,6 @@ public class StreamGraphDemo {
                 .build();
 
         StreamTableEnvironment tEnv = StreamTableEnvironment.create(env, settings);
-
-//        TableEnvironment tEnv = TableEnvironment.create(settings);
 
         TableConfig tableConfig = tEnv.getConfig();
         tableConfig.getConfiguration().setString("execution.checkpointing.interval", "60s");
@@ -83,7 +82,7 @@ public class StreamGraphDemo {
         List<Transformation<?>> trans = planner.translate(modifyOperations);
 
         // streamGraph
-        StreamGraph streamGraph = null;//ExecutorUtils.generateStreamGraph(env, trans);
+        StreamGraph streamGraph = ExecutorUtils.generateStreamGraph(env, trans);
 
         if (tableConfig.getConfiguration().containsKey(PipelineOptions.NAME.key())) {
             streamGraph.setJobName(tableConfig.getConfiguration().getString(PipelineOptions.NAME));

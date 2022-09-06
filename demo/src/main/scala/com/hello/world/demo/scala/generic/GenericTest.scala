@@ -141,7 +141,6 @@ class Container[A](value: A) {
     _value = value
   }
 
-  @Test
   def test(): Unit = {
     val catContainer: Container[Cat] = new Container(Cat("Felix"))
     //    val animalContainer: Container[Animal] = catContainer
