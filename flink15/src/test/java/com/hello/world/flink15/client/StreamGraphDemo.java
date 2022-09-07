@@ -22,6 +22,7 @@ import org.apache.flink.yarn.YarnClusterDescriptor;
 import org.apache.flink.yarn.configuration.YarnConfigOptions;
 import org.apache.flink.yarn.configuration.YarnLogConfigUtil;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.service.Service;
 import org.apache.hadoop.yarn.api.records.ApplicationId;
 import org.apache.hadoop.yarn.client.api.YarnClient;
 import org.apache.hadoop.yarn.conf.YarnConfiguration;
@@ -107,6 +108,11 @@ public class StreamGraphDemo {
         YarnClient yarnClient = YarnClient.createYarnClient();
         yarnClient.init(yarnConfiguration);
         yarnClient.start();
+
+        // test yarn client
+        if (yarnClient.isInState(Service.STATE.STARTED)){
+            System.out.println("test yarn client successful");
+        }
 
         ClusterSpecification clusterSpecification = new ClusterSpecification.ClusterSpecificationBuilder().createClusterSpecification();
         YarnClusterDescriptor yarnClusterDescriptor = new YarnClusterDescriptor(configuration, yarnConfiguration, yarnClient,

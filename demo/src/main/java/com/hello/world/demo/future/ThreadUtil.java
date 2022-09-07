@@ -1,4 +1,4 @@
-package com.hello.world.demo.queue;
+package com.hello.world.demo.future;
 
 import lombok.extern.slf4j.Slf4j;
 

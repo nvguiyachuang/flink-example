@@ -1,4 +1,4 @@
-package com.hello.world.demo.queue;
+package com.hello.world.demo.future;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public class TestDemo {
+public class QueueDemoTest {
 
     @Test
     public void useSynchronousQueue() throws Exception {
