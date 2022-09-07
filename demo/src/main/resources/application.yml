@@ -1,3 +1,13 @@
+server:
+  port: 9999
+
+spring:
+  redis:
+    database: 0
+    host: node
+    port: 16379
+    password: Redis6379
+
 test:
   person:
     lastName: hello
@@ -6,8 +16,8 @@ test:
     birth: 2017/12/12
     maps: {k1: v1,k2: 12}
     lists:
-    - lisi
-    - zhaoliu
+      - lisi
+      - zhaoliu
     dog:
       name: 小狗
       age: 12

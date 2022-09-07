@@ -20,7 +20,7 @@ public class Person {
 
     //lastName必须是邮箱格式
 //    @Email
-    @Value("${person.last-name}")
+    @Value("${test.person.last-name}")
     private String lastName;
     @Value("#{11*2}")
     private Integer age;

@@ -17,7 +17,7 @@ import java.util.Map;
  * <a href="https://www.cnblogs.com/vegetableDD/p/11968261.html">source link</a>
  */
 @Component
-@ConfigurationProperties(prefix = "testdemo.person")
+@ConfigurationProperties(prefix = "test.person")
 public class PersonPojo {
 
     private String lastName;
