@@ -13,10 +13,13 @@
         <module>demo</module>
         <module>flink13</module>
         <module>flink15</module>
+        <module>demo-spring</module>
     </modules>
 
     <properties>
         <log4j2.version>2.18.0</log4j2.version>
+        <mockito.version>3.4.6</mockito.version>
+        <powermock.version>2.0.9</powermock.version>
     </properties>
 
     <dependencies>
@@ -58,11 +61,38 @@
             <version>3.23.1</version>
         </dependency>
 
-        <!--        jackson-->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.13.3</version>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <version>${mockito.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>${powermock.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito2</artifactId>
+            <version>${powermock.version}</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!--log4j 2 -->

@@ -1,6 +1,5 @@
-package com.hello.world.demo.config;
+package com.hello.world.spring.config;
 
-import com.hello.world.demo.scala.generic.Dog;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;

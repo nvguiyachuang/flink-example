@@ -1,6 +1,5 @@
-package com.hello.world.demo.config;
+package com.hello.world.spring.config;
 
-import com.hello.world.demo.scala.generic.Dog;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 

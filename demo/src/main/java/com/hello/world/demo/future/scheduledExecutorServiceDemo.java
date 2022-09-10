@@ -15,7 +15,7 @@ public class scheduledExecutorServiceDemo {
         TimeUnit.SECONDS.sleep(5);
         // cancel schedule
         scheduledFuture.cancel(false);
-        // exit jvm
+        // exit scheduledExecutorService
         scheduledExecutorService.shutdown();
     }
 }

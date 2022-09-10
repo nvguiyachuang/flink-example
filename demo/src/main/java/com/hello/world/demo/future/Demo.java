@@ -1,9 +1,8 @@
 package com.hello.world.demo.future;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import org.junit.jupiter.api.Test;
+
+import java.util.concurrent.*;
 
 public class Demo {
 
@@ -46,5 +45,11 @@ public class Demo {
             e.printStackTrace();
         }
         System.out.println("我的最重要的事情干完了, 我要获取异步计算结果来执行剩下的事情.");
+    }
+
+    @Test
+    void test1() throws ExecutionException, InterruptedException {
+        CompletableFuture<String> res = CompletableFuture.completedFuture("hello future");
+        System.out.println(res.get());
     }
 }

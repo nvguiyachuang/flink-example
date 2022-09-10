@@ -10,5 +10,8 @@ public class LogDemo {
         log.debug("rgwegwegwegwegwe");
         log.info("rgwegwegwegwegwe");
         log.error("rgwegwegwegwegwe");
+
+        String projectBaseDir = System.getProperty("project.basedir");
+        System.out.println(projectBaseDir);
     }
 }
