@@ -9,14 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Boot {
     public static void main(String[] args) {
-        SpringApplication run =new SpringApplication(Boot.class);
-        String pid = System.getProperty("pid");
-        System.out.println(pid);
-
+        SpringApplication run = new SpringApplication(Boot.class);
         run.run(args);
     }
 
-    @RequestMapping(value = { "", "/", "index", "index.html" })
+    @RequestMapping(value = {"", "/", "index", "index.html"})
     public String index() {
         return "<h2>It working !</h2>";
     }

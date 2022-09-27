@@ -21,3 +21,10 @@ test:
     dog:
       name: 小狗
       age: 12
+
+
+#nacos:
+#  config:
+#    server-addr: node:8848
+#  discovery:
+#    server-addr: node:8848

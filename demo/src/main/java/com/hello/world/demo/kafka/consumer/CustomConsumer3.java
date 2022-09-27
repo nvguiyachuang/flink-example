@@ -33,6 +33,7 @@ public class CustomConsumer3 {
                     public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
                         // 分区分配之前, 提交旧的offset
                         commit();
+                        kafkaConsumer.commitAsync();
                     }
 
                     @Override

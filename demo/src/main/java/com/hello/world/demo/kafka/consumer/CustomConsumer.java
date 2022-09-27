@@ -27,14 +27,20 @@ public class CustomConsumer {
         // 订阅topic
         kafkaConsumer.subscribe(Collections.singletonList("test"));
 
-        while (true) {
+        int i = 0;
+
+        do {
             ConsumerRecords<String, String> records = kafkaConsumer.poll(100);
             for (ConsumerRecord<String, String> record : records) {
                 System.out.println("topic:::" + record.topic());
                 System.out.println("offset::" + record.offset());
                 System.out.println("value:::" + record.value());
             }
-        }
+
+            i++;
+        } while (i <= 999);
+
+        kafkaConsumer.close();
 
     }
 }

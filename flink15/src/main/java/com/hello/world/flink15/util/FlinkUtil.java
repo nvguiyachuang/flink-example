@@ -56,15 +56,18 @@ public class FlinkUtil {
         return tableResult.getResolvedSchema().getColumnNames();
     }
 
-    public static String triggerSavepoint(ClusterClient clusterClient, String jobId, String savePoint) throws ExecutionException, InterruptedException {
-        return clusterClient.triggerSavepoint(JobID.fromHexString(jobId), savePoint, SavepointFormatType.DEFAULT).get().toString();
+    public static String triggerSavepoint(ClusterClient<String> clusterClient, String jobId, String savePoint)
+            throws ExecutionException, InterruptedException {
+        return clusterClient.triggerSavepoint(JobID.fromHexString(jobId), savePoint, SavepointFormatType.DEFAULT).get();
     }
 
-    public static String stopWithSavepoint(ClusterClient clusterClient, String jobId, String savePoint) throws ExecutionException, InterruptedException {
-        return clusterClient.stopWithSavepoint(JobID.fromHexString(jobId), true, savePoint, SavepointFormatType.DEFAULT).get().toString();
+    public static String stopWithSavepoint(ClusterClient<String> clusterClient, String jobId, String savePoint)
+            throws ExecutionException, InterruptedException {
+        return clusterClient.stopWithSavepoint(JobID.fromHexString(jobId), true, savePoint, SavepointFormatType.DEFAULT).get();
     }
 
-    public static String cancelWithSavepoint(ClusterClient clusterClient, String jobId, String savePoint) throws ExecutionException, InterruptedException {
-        return clusterClient.cancelWithSavepoint(JobID.fromHexString(jobId), savePoint, SavepointFormatType.DEFAULT).get().toString();
+    public static String cancelWithSavepoint(ClusterClient<String> clusterClient, String jobId, String savePoint)
+            throws ExecutionException, InterruptedException {
+        return clusterClient.cancelWithSavepoint(JobID.fromHexString(jobId), savePoint, SavepointFormatType.DEFAULT).get();
     }
 }

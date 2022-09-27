@@ -1,15 +1,10 @@
 package com.hello.world.demo.kafka.producer;
 
-import com.hello.world.demo.kafka.interceptor.CounterInterceptor;
-import com.hello.world.demo.kafka.interceptor.TimeInterceptor;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class CustomProducer {
@@ -24,25 +19,10 @@ public class CustomProducer {
         prop.put(ProducerConfig.LINGER_MS_CONFIG, 1);
         // 重试次数
         prop.put(ProducerConfig.RETRIES_CONFIG, 3);
-        // 读已提交
-        prop.put("isolation.level", "read_committed");
         // 发送ack级别
         prop.put(ProducerConfig.ACKS_CONFIG, "all");
-        // client.id
-        prop.put("client.id", "ProducerTranscationnalExample");
-
-        // 开启幂等性
-        prop.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
-        // 开启exactly-once
-        prop.put("processing.guarantee", "exactly-once");
         // 开启事务
         prop.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "unique-id");
-
-        // 添加拦截器
-        List<String> list = new ArrayList<>();
-        list.add(CounterInterceptor.class.getName());
-        list.add(TimeInterceptor.class.getName());
-        prop.put(ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG, list);
 
         KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(prop);
 
@@ -51,7 +31,12 @@ public class CustomProducer {
         kafkaProducer.beginTransaction();
 
 //        for (int i = 0; i < 10; i++) {
+        try {
             kafkaProducer.send(new ProducerRecord<>("flink_test_4", "message-"));
+        } catch (Exception e) {
+            // abortTransaction
+            kafkaProducer.abortTransaction();
+        }
 
 //            Future<RecordMetadata> result = kafkaProducer.send(
 //                    // 发送数据，key确定分区
