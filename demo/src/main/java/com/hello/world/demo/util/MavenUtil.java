@@ -8,7 +8,6 @@ public class MavenUtil {
     /**
      * 遍历指定目录下（包括其子目录）的所有文件，并删除以 lastUpdated 结尾的文件
      * @param dir 目录的位置 path
-     * @throws IOException
      */
     public static void listDirectory(File dir) throws IOException {
         if (!dir.exists())
@@ -36,6 +35,6 @@ public class MavenUtil {
  
     public static void main(String[] args) throws IOException {
         // 指定maven的本地仓库
-        listDirectory(new File("D:\\dev\\repository"));
+        listDirectory(new File("/Users/xzh/.m2/repository"));
     }
 }
