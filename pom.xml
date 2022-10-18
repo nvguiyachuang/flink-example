@@ -14,7 +14,6 @@
 <!--        <module>flink13</module>-->
         <module>flink15</module>
 <!--        <module>demo-spring</module>-->
-<!--        <module>nacos</module>-->
     </modules>
 
     <properties>

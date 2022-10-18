@@ -1,4 +1,4 @@
-package com.hello.world.flink15.st;
+package com.hello.world.flink15.yarn;
 
 import org.apache.flink.api.dag.Transformation;
 import org.apache.flink.client.deployment.ClusterDeploymentException;
@@ -8,6 +8,7 @@ import org.apache.flink.client.program.ClusterClientProvider;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.runtime.jobgraph.JobGraph;
+import org.apache.flink.runtime.jobgraph.SavepointRestoreSettings;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.graph.StreamGraph;
 import org.apache.flink.table.api.EnvironmentSettings;
@@ -44,7 +45,7 @@ public class StreamGraphDemo {
                 " 'rows-per-second' = '1',\n" +
                 " 'fields.order_number.kind' = 'sequence',\n" +
                 " 'fields.order_number.start' = '1',\n" +
-                " 'fields.order_number.end' = '1000'\n" +
+                " 'fields.order_number.end' = '100000'\n" +
                 ")";
 
         String sql2 = "CREATE TABLE pt (\n" +
@@ -60,6 +61,8 @@ public class StreamGraphDemo {
         HashMap<String, String> envConf = new HashMap<>();
         envConf.put("execution.checkpointing.interval", "70s");
         envConf.put("table.exec.resource.default-parallelism", "2");
+        // invalid
+        envConf.put("execution.savepoint.path", "hdfs://localhost:9000/flink-savepoints/savepoint-63b8cf-ed60a1e760f9");
 
         submit(sql1,sql2, sql3,envConf);
     }
@@ -108,6 +111,9 @@ public class StreamGraphDemo {
         }
         StreamGraph streamGraph = env.getStreamGraph();
         JobGraph jobGraph = streamGraph.getJobGraph();
+
+        jobGraph.setSavepointRestoreSettings(SavepointRestoreSettings.forPath(
+                "hdfs://localhost:9000/flink-savepoints/savepoint-63b8cf-ed60a1e760f9", true));
 
         System.out.println(jobGraph);
 
